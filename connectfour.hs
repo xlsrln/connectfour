@@ -1,4 +1,7 @@
+module Main where
+
 import Data.List
+import System.IO
 
 nxt "x" = "o"
 nxt "o" = "x"
@@ -9,11 +12,12 @@ hsize = 7
 emptyrow = replicate hsize []
 initialboard = map (replicate vsize) $ replicate hsize "-"
 
-main = do turn "x" initialboard     
+-- start the program!
+main = do 
+    hSetBuffering stdout NoBuffering
+    turn "x" initialboard     
         
---main action, asks for input and does the stuff
-
-
+-- asks for input and does the stuff to the board
 doStuff s board = do
         column <- read <$> getLine :: IO Int
         let newboard = putCoin s column board
@@ -22,6 +26,7 @@ doStuff s board = do
                         doStuff s board
                 else return newboard
 
+-- the rest of the stuff happening every turn
 turn s board = do 
         putStrLn " "
         putStr $ "player " ++ s ++ " turn, enter column: "
@@ -54,12 +59,14 @@ status board
 listOr :: [Bool] -> Bool
 listOr = foldr (||) False
 
-contains [] ys = True
-contains xs [] = False
-contains (x:xs) (y:ys) = (x == y) && contains xs ys || contains (x:xs) ys
+contains x y = isInfixOf y x --found out this had a standard function already
+-- contains [] ys = True
+-- contains xs [] = False
+-- contains (x:xs) (y:ys) = (x == y) && contains xs ys || contains (x:xs) ys
 
 --and the following functions
 checklist board = concat [rows board, columns board, diagonals board]
+-- checklist board = concat [rows board, columns board]
 
 --extract all columns to strings
 columns :: [[String]] -> [String]

@@ -45,7 +45,7 @@ turn s board = do
 printBoard :: [[String]] -> IO ()
 printBoard board = do
                     let rest = removeRow board
-                    putStrLn $ printRow board
+                    putStrLn $ "  " ++ printRow board
                     if rest == emptyrow then return ()
                         else printBoard rest
 

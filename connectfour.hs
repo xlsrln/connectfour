@@ -1,7 +1,5 @@
 module Main where
 
---yay lol
-
 import Data.List
 import System.IO
 
@@ -27,6 +25,8 @@ doStuff s board = do
                 then do putStr "wrong input try again: "
                         doStuff s board
                 else return newboard
+                
+guido s col board = board2string $ putCoin s col board
 
 -- the rest of the stuff happening every turn
 turn s board = do 
@@ -50,6 +50,8 @@ printBoard board = do
                     putStrLn $ "  " ++ printRow board
                     if rest == emptyrow then return ()
                         else printBoard rest
+
+board2string board = rows board
 
 --the hard part, determining if someone won or not
 status board  

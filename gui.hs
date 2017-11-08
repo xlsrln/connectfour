@@ -24,6 +24,6 @@ gui = do
         b5 <- button f [ text := "Click me!"
                     , col 5
                     ]
-        set f [ layout := column 25 [ widget st, widget b ] ]
+        set f [ layout := column 25 [ widget st, widget b1 ] ]
 
 col n = putStrLn show n

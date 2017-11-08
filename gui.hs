@@ -7,5 +7,9 @@ main = start gui
 
 gui :: IO ()
 gui = do
-  frame [text := "Hello World!"]
-  return ()
+  f <- frame [ text := "Event Handling" ]
+  st <- staticText f [ text := "You haven\'t clicked the button yet." ]
+  b <- button f [ text := "Click me!"
+                , on command := set st [ text := "You have clicked the button!" ]
+                ]
+  set f [ layout := column 25 [ widget st, widget b ] ]

@@ -59,7 +59,7 @@ status board
 listOr :: [Bool] -> Bool
 listOr = foldr (||) False
 
-contains x y = isInfixOf y x --found out this had a standard function already
+contains x y = isInfixOf x y --found out this had a standard function already
 -- contains [] ys = True
 -- contains xs [] = False
 -- contains (x:xs) (y:ys) = (x == y) && contains xs ys || contains (x:xs) ys

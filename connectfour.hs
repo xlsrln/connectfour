@@ -1,4 +1,4 @@
-module Main where
+module Connectfour where
 
 import Data.List
 import System.IO
@@ -7,8 +7,8 @@ nxt "x" = "o"
 nxt "o" = "x"
 
 --board stuff
-vsize = 6
-hsize = 7
+vsize = 1
+hsize = 5
 emptyrow = replicate hsize []
 initialboard = map (replicate vsize) $ replicate hsize "-"
 

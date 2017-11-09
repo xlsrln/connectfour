@@ -7,8 +7,8 @@ nxt "x" = "o"
 nxt "o" = "x"
 
 --board stuff
-vsize = 1
-hsize = 5
+vsize = 5
+hsize = 6
 emptyrow = replicate hsize []
 initialboard = map (replicate vsize) $ replicate hsize "-"
 
@@ -40,8 +40,12 @@ turn s board = do
         printBoard $ map reverse newboard
         case status newboard of
             "-" -> turn (nxt s) newboard
-            c -> do putStrLn $ "player " ++ c ++ " won"
-                    putStrLn " "
+            "y" -> do 
+                        putStrLn " game over "
+                        putStrLn " "
+            c -> do 
+                        putStrLn $ "player " ++ c ++ " won"
+                        putStrLn " "
 
 --main printing function, prints the current board as rows of strings
 printBoard :: [[String]] -> IO ()
@@ -57,6 +61,7 @@ board2string board = rows board
 status board  
     | listOr $ map (contains "xxxx") $ checklist board = "x"
     | listOr $ map (contains "oooo") $ checklist board = "o"
+    | not $ contains "-" $ concat $ rows board   = "y"
     | otherwise                                        = "-"
 
 --which uses these logical operations

@@ -29,12 +29,27 @@ gui = do
         
         st <- staticText f [ text := "" ]
         
-        s1 <- staticText f [ text := intersperse '  ' $ head (Connectfour.rows board)]
-        s2 <- staticText f [ text := intersperse '  ' $ head $ tail (Connectfour.rows board)]
-        s3 <- staticText f [ text := intersperse '  ' $ head $ tail $ tail (Connectfour.rows board)]
-        s4 <- staticText f [ text := intersperse '  ' $ head $ tail $ tail $ tail (Connectfour.rows board)]
-        s5 <- staticText f [ text := intersperse '  ' $ head $ tail $ tail $ tail $ tail (Connectfour.rows board)]
-        s6 <- staticText f [ text := intersperse '  ' $ head $ tail $ tail $ tail $ tail $ tail (Connectfour.rows board)]
+        -- s1 <- staticText f [ text := intersperse '  ' $ head (Connectfour.rows board)]
+        -- s2 <- staticText f [ text := intersperse '  ' $ head $ tail (Connectfour.rows board)]
+        -- s3 <- staticText f [ text := intersperse '  ' $ head $ tail $ tail (Connectfour.rows board)]
+        -- s4 <- staticText f [ text := intersperse '  ' $ head $ tail $ tail $ tail (Connectfour.rows board)]
+        -- s5 <- staticText f [ text := intersperse '  ' $ head $ tail $ tail $ tail $ tail (Connectfour.rows board)]
+        -- s6 <- staticText f [ text := intersperse '  ' $ head $ tail $ tail $ tail $ tail $ tail (Connectfour.rows board)]
+        
+        s1 <- staticText f [ text := head (Connectfour.rows board)]
+        s2 <- staticText f [ text := head $ tail (Connectfour.rows board)]
+        s3 <- staticText f [ text := head $ tail $ tail (Connectfour.rows board)]
+        s4 <- staticText f [ text := head $ tail $ tail $ tail (Connectfour.rows board)]
+        s5 <- staticText f [ text := head $ tail $ tail $ tail $ tail (Connectfour.rows board)]
+        s6 <- staticText f [ text := head $ tail $ tail $ tail $ tail $ tail (Connectfour.rows board)]
+        
+        set s1 [font := fontFixed]
+        set s2 [font := fontFixed]
+        set s3 [font := fontFixed]
+        set s4 [font := fontFixed]
+        set s5 [font := fontFixed]
+        set s6 [font := fontFixed]
+        
         
         let wongame s = do
             set st [ text := s ++ " won "]
@@ -62,12 +77,12 @@ gui = do
                 set b5 [ on command := up 5 tb ns]
                 set b6 [ on command := up 6 tb ns]
                 
-                set s1 [ text := intersperse '  ' $ head (Connectfour.rows tb)]
-                set s2 [ text := intersperse '  ' $ head $ tail (Connectfour.rows tb)]
-                set s3 [ text := intersperse '  ' $ head $ tail $ tail (Connectfour.rows tb)]
-                set s4 [ text := intersperse '  ' $ head $ tail $ tail $ tail (Connectfour.rows tb)]
-                set s5 [ text := intersperse '  ' $ head $ tail $ tail $ tail $ tail (Connectfour.rows tb)]
-                set s6 [ text := intersperse '  ' $ head $ tail $ tail $ tail $ tail $ tail (Connectfour.rows tb)]
+                set s1 [ text := head (Connectfour.rows tb)]
+                set s2 [ text := head $ tail (Connectfour.rows tb)]
+                set s3 [ text := head $ tail $ tail (Connectfour.rows tb)]
+                set s4 [ text := head $ tail $ tail $ tail (Connectfour.rows tb)]
+                set s5 [ text := head $ tail $ tail $ tail $ tail (Connectfour.rows tb)]
+                set s6 [ text := head $ tail $ tail $ tail $ tail $ tail (Connectfour.rows tb)]
                 
                 let ws = Connectfour.status tb
                 if ws == s then wongame ("player " ++ s) else putStr ""

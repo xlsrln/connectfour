@@ -1,7 +1,7 @@
 # connectfour
 haskell connect four
 
-let's you:
+lets you:
 - play connect four (1v1 locally) via command line (Connectfour.hs, main)
 - playy connect four (1v1 locally) via graphical interface (gui.hs)
 

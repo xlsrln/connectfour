@@ -43,16 +43,16 @@ gui = do
         s5 <- staticText f [ text := head $ tail $ tail $ tail $ tail (Connectfour.rows board)]
         s6 <- staticText f [ text := head $ tail $ tail $ tail $ tail $ tail (Connectfour.rows board)]
         
-        set s1 [font := fontFixed]
-        set s2 [font := fontFixed]
-        set s3 [font := fontFixed]
-        set s4 [font := fontFixed]
-        set s5 [font := fontFixed]
-        set s6 [font := fontFixed]
+        set s1 [font := fontFixed{ _fontSize = 50 }]
+        set s2 [font := fontFixed{ _fontSize = 50 }]
+        set s3 [font := fontFixed{ _fontSize = 50 }]
+        set s4 [font := fontFixed{ _fontSize = 50 }]
+        set s5 [font := fontFixed{ _fontSize = 50 }]
+        set s6 [font := fontFixed{ _fontSize = 50 }]
         
         
         let wongame s = do
-            set st [ text := s ++ " won "]
+            set st [ text := s ++ " won ", font := fontFixed{ _fontSize = 30 }]
             set b1 [ on command := putStr ""]
             set b2 [ on command := putStr ""]
             set b3 [ on command := putStr ""]
